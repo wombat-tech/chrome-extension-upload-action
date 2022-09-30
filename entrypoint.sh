@@ -29,7 +29,7 @@ status=`curl \
 | \
 jq -r '.uploadState'`
 
-if [[ $status == 'FAILURE' ]] || [[ $status == '' ]]
+if [[ $status == 'FAILURE' ]] || [[ "$(printf '%s' "$status") == '' ]]
 then
   exit 1
 fi
@@ -49,7 +49,7 @@ then
   | \
   jq -r '.publishState'`
 
-  if [[ $publish == 'FAILURE' ]] || [[ $publish == '' ]]
+  if [[ $publish == 'FAILURE' ]] || [[ "$(printf '%s' "$publish") == '' ]]
   then
     exit 1
   fi
