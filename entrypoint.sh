@@ -49,7 +49,7 @@ then
   | \
   jq -r '.publishState'`
 
-  if [[ $publish == 'FAILURE' ]] || [[ "$(printf '%s' "$publish") == '' ]]
+  if [[ $publish == 'FAILURE' ]]
   then
     exit 1
   fi
