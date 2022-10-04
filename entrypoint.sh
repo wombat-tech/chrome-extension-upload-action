@@ -17,7 +17,7 @@ token=`curl \
 | \
 jq -r '.access_token'`
 
-if [[ "$(printf '%s' "$token") == '' ]]
+if [[ "$(printf '%s' "$token")" == '' ]]
 then
   exit 1
 fi
