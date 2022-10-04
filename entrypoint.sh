@@ -17,6 +17,11 @@ token=`curl \
 | \
 jq -r '.access_token'`
 
+if [[ "$(printf '%s' "$token") == '' ]]
+then
+  exit 1
+fi
+
 status=`curl \
 --silent \
 --show-error \
@@ -29,7 +34,7 @@ status=`curl \
 | \
 jq -r '.uploadState'`
 
-if [[ $status == 'FAILURE' ]] || [[ "$(printf '%s' "$status") == '' ]]
+if [[ $status == 'FAILURE' ]]
 then
   exit 1
 fi
